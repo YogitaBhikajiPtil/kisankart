@@ -1,42 +1,63 @@
 const { DataTypes } = require("sequelize");
-const {sequelize} = require("../config/database");
+const { sequelize } = require("../config/database");
 
-const ProductImage = sequelize.define(
-    "ProductImage",
+const Notification = sequelize.define(
+    "Notification",
     {
         id: {
+
             type: DataTypes.INTEGER,
+
             autoIncrement: true,
+
             primaryKey: true
+
         },
 
-        productId: {
+        userId: {
+
             type: DataTypes.INTEGER,
+
             allowNull: false
+
         },
 
-        imageUrl: {
+        title: {
+
             type: DataTypes.STRING,
+
             allowNull: false,
+
             validate: {
+
                 notEmpty: true
+
             }
+
         },
 
-        isPrimary: {
+        message: {
+
+            type: DataTypes.TEXT,
+
+            allowNull: false
+
+        },
+
+        isRead: {
+
             type: DataTypes.BOOLEAN,
-            defaultValue: false
-        },
 
-        displayOrder: {
-            type: DataTypes.INTEGER,
-            defaultValue: 1
+            defaultValue: false
+
         }
+
     },
     {
-        tableName: "productImages",
+        tableName: "notifications",
+
         timestamps: true
     }
 );
 
-module.exports = ProductImage;
+module.exports = Notification;

@@ -1,5 +1,7 @@
 const { Op } = require("sequelize");
+const fs = require("fs");
 
+const path = require("path");
 const {
     Product,
     Category,
@@ -12,7 +14,11 @@ const {
 // Add Product
 // ==========================================
 
-const addProduct = async (productData, farmerId) => {
+const addProduct = async (
+    productData,
+    files,
+    farmerId
+) => {
 
     const {
         categoryId,
@@ -33,7 +39,9 @@ const addProduct = async (productData, farmerId) => {
     const category = await Category.findByPk(categoryId);
 
     if (!category) {
+
         throw new Error("Category not found.");
+
     }
 
     // Create Product
@@ -56,7 +64,9 @@ const addProduct = async (productData, farmerId) => {
 
         isOrganic,
 
-        status
+        status,
+
+        unit
 
     });
 
@@ -78,32 +88,33 @@ const addProduct = async (productData, farmerId) => {
 
     });
 
-    return product;
+    // Save Product Images
 
-};
+    if (files && files.length > 0) {
 
-// ==========================================
-// Get All Products
-// ==========================================
+        const images = files.map((file, index) => ({
 
-const getAllProducts = async () => {
+            productId: product.id,
 
-    const products = await Product.findAll({
+            imageUrl: `/uploads/${file.filename}`,
+
+            isPrimary: index === 0,
+
+            displayOrder: index + 1
+
+        }));
+
+        await ProductImage.bulkCreate(images);
+
+    }
+
+    return await Product.findByPk(product.id, {
 
         include: [
 
             {
                 model: Category,
                 as: "category"
-            },
-
-            {
-                model: User,
-                as: "farmer",
-                attributes: [
-                    "id",
-                    "name"
-                ]
             },
 
             {
@@ -116,19 +127,110 @@ const getAllProducts = async () => {
                 as: "images"
             }
 
+        ]
+
+    });
+
+};
+// ==========================================
+// Get All Products
+// ==========================================
+
+// ==========================================
+// Get All Products
+// ==========================================
+
+const getAllProducts = async (query) => {
+
+    const page = Number(query.page) || 1;
+
+    const limit = Number(query.limit) || 10;
+
+    const offset = (page - 1) * limit;
+
+    const where = {};
+
+    // Search
+
+    if (query.keyword) {
+
+        where.name = {
+
+            [Op.like]: `%${query.keyword}%`
+
+        };
+
+    }
+
+    // Category
+
+    if (query.categoryId) {
+
+        where.categoryId = query.categoryId;
+
+    }
+
+    // Status
+
+    if (query.status) {
+
+        where.status = query.status;
+
+    }
+
+    const { count, rows } = await Product.findAndCountAll({
+
+        where,
+
+        include: [
+
+            {
+                model: Category,
+                as: "category"
+            },
+
+            {
+                model: Inventory,
+                as: "inventory"
+            },
+
+            {
+                model: ProductImage,
+                as: "images"
+            },
+
+            {
+                model: User,
+                as: "farmer",
+                attributes: [
+                    "id",
+                    "name"
+                ]
+            }
+
         ],
 
         order: [
+
             ["createdAt", "DESC"]
-        ]
+
+        ],
+
+        limit,
+
+        offset
 
     });
 
     return {
 
-        totalProducts: products.length,
+        totalProducts: count,
 
-        products
+        currentPage: page,
+
+        totalPages: Math.ceil(count / limit),
+
+        products: rows
 
     };
 
@@ -186,10 +288,20 @@ const getProductById = async (id) => {
 // Update Product
 // ==========================================
 
+// ==========================================
+// Update Product
+// ==========================================
+
 const updateProduct = async (
+
     productId,
+
     productData,
+
+    files,
+
     farmerId
+
 ) => {
 
     const product = await Product.findOne({
@@ -210,9 +322,161 @@ const updateProduct = async (
 
     }
 
-    await product.update(productData);
+    await product.update({
 
-    return product;
+        categoryId: productData.categoryId,
+
+        name: productData.name,
+
+        description: productData.description,
+
+        price: productData.price,
+
+        harvestDate: productData.harvestDate,
+
+        expiryDate: productData.expiryDate,
+
+        status: productData.status,
+
+        isOrganic: productData.isOrganic
+
+    });
+
+    const inventory = await Inventory.findOne({
+
+        where: {
+
+            productId
+
+        }
+
+    });
+
+    if (inventory) {
+
+        await inventory.update({
+
+            availableQuantity: productData.availableQuantity,
+
+            totalQuantity: productData.availableQuantity,
+
+            lowStockThreshold: productData.lowStockThreshold,
+
+            unit: productData.unit
+
+        });
+
+    }
+
+    if (files && files.length > 0) {
+
+        const images = files.map((file, index) => ({
+
+            productId,
+
+            imageUrl: `/uploads/${file.filename}`,
+
+            isPrimary: false,
+
+            displayOrder: index + 1
+
+        }));
+
+        await ProductImage.bulkCreate(images);
+
+    }
+
+    return await Product.findByPk(productId, {
+
+        include: [
+
+            {
+
+                model: Category,
+
+                as: "category"
+
+            },
+
+            {
+
+                model: Inventory,
+
+                as: "inventory"
+
+            },
+
+            {
+
+                model: ProductImage,
+
+                as: "images"
+
+            }
+
+        ]
+
+    });
+
+};
+
+// ==========================================
+// Delete Product Image
+// ==========================================
+
+const deleteProductImage = async (
+
+    imageId,
+
+    farmerId
+
+) => {
+
+    const image = await ProductImage.findByPk(imageId, {
+
+        include: [
+
+            {
+
+                model: Product,
+
+                as: "product"
+
+            }
+
+        ]
+
+    });
+
+    if (!image) {
+
+        throw new Error("Image not found.");
+
+    }
+
+    if (image.product.farmerId !== farmerId) {
+
+        throw new Error("Unauthorized.");
+
+    }
+
+    const imagePath = path.join(
+
+        __dirname,
+
+        "..",
+
+        image.imageUrl
+
+    );
+
+    if (fs.existsSync(imagePath)) {
+
+        fs.unlinkSync(imagePath);
+
+    }
+
+    await image.destroy();
 
 };
 
@@ -310,6 +574,7 @@ module.exports = {
 
     deleteProduct,
 
-    searchProducts
+    searchProducts,
 
+    deleteProductImage,
 };

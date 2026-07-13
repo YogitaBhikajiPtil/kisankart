@@ -9,7 +9,11 @@ const authRoutes = require("./routes/authRoutes");
 const customerRoutes = require("./routes/customerRoutes");
 const productRoutes = require("./routes/productRoutes");
 const farmerRoutes = require("./routes/farmerRoutes");
-
+const categoryRoutes = require("./routes/categoryRoutes");
+const inventoryRoutes = require("./routes/inventoryRoutes");
+const analyticsRoutes = require("./routes/analyticsRoutes");
+const profileRoutes = require("./routes/profileRoutes");
+const customerProductRoutes = require("./routes/customerProductRoutes");
 const app = express();
 
 // ===============================
@@ -50,6 +54,20 @@ app.use("/api/auth", authRoutes);
 app.use("/api/customer", customerRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/farmer", farmerRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/uploads", express.static("uploads"));
+app.use("/api/inventory", inventoryRoutes);
+app.use("/api/farmer/analytics", analyticsRoutes);
+app.use(
+    "/api/farmer/profile",
+    profileRoutes
+);
+
+app.use(
+    "/api/customer/products",
+    customerProductRoutes
+);
+
 // ===============================
 // 404 Route
 // ===============================

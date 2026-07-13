@@ -1,3 +1,5 @@
+
+const { Op } = require("sequelize");
 const {
     User,
     Product,
@@ -105,8 +107,108 @@ const getDashboard = async (farmerId) => {
 
 };
 
+// ==========================================
+// Get My Products
+// ==========================================
+
+const getMyProducts = async (
+    farmerId,
+    query
+) => {
+
+    const page = Number(query.page) || 1;
+
+    const limit = Number(query.limit) || 10;
+
+    const offset = (page - 1) * limit;
+
+    const where = {
+
+        farmerId
+
+    };
+
+    // Search
+
+    if (query.keyword) {
+
+        where.name = {
+
+            [Op.like]: `%${query.keyword}%`
+
+        };
+
+    }
+
+    // Category Filter
+
+    if (query.categoryId) {
+
+        where.categoryId = query.categoryId;
+
+    }
+
+    // Status Filter
+
+    if (query.status) {
+
+        where.status = query.status;
+
+    }
+
+    const { count, rows } = await Product.findAndCountAll({
+
+        where,
+
+        include: [
+
+            {
+                model: Category,
+                as: "category"
+            },
+
+            {
+                model: Inventory,
+                as: "inventory"
+            },
+
+            {
+                model: ProductImage,
+                as: "images"
+            }
+
+        ],
+
+        order: [
+
+            ["createdAt", "DESC"]
+
+        ],
+
+        limit,
+
+        offset
+
+    });
+
+    return {
+
+        totalProducts: count,
+
+        currentPage: page,
+
+        totalPages: Math.ceil(count / limit),
+
+        products: rows
+
+    };
+
+};
+
 module.exports = {
 
-    getDashboard
+    getDashboard,
+
+    getMyProducts
 
 };

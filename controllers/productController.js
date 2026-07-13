@@ -10,6 +10,7 @@ const addProduct = async (req, res, next) => {
 
         const product = await productService.addProduct(
             req.body,
+            req.files,
             req.user.id
         );
 
@@ -35,7 +36,9 @@ const getAllProducts = async (req, res, next) => {
 
     try {
 
-        const products = await productService.getAllProducts(req.query);
+        const products = await productService.getAllProducts(
+            req.query
+        );
 
         return res.status(200).json({
             success: true,
@@ -84,6 +87,7 @@ const updateProduct = async (req, res, next) => {
         const product = await productService.updateProduct(
             req.params.id,
             req.body,
+            req.files,
             req.user.id
         );
 
@@ -91,6 +95,38 @@ const updateProduct = async (req, res, next) => {
             success: true,
             message: "Product updated successfully.",
             product
+        });
+
+    } catch (error) {
+
+        next(error);
+
+    }
+
+};
+
+// ==========================================
+// Delete Product Image
+// ==========================================
+
+const deleteProductImage = async (req, res, next) => {
+
+    try {
+
+        await productService.deleteProductImage(
+
+            req.params.imageId,
+
+            req.user.id
+
+        );
+
+        return res.status(200).json({
+
+            success: true,
+
+            message: "Product image deleted successfully."
+
         });
 
     } catch (error) {
@@ -156,5 +192,6 @@ module.exports = {
     getProductById,
     updateProduct,
     deleteProduct,
-    searchProducts
+    searchProducts,
+    deleteProductImage,
 };

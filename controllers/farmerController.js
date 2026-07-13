@@ -25,6 +25,29 @@ const getDashboard = async (req, res, next) => {
 
 };
 
+const getMyProducts = async (req, res, next) => {
+
+    try {
+
+        const products = await farmerService.getMyProducts(
+            req.user.id,
+            req.query
+        );
+
+        return res.status(200).json({
+            success: true,
+            ...products
+        });
+
+    } catch (error) {
+
+        next(error);
+
+    }
+
+};
+
 module.exports = {
-    getDashboard
+    getDashboard,
+    getMyProducts
 };

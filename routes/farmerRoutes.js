@@ -8,7 +8,8 @@ const {
 } = require("../middleware/authMiddleware");
 
 const {
-    getDashboard
+    getDashboard,
+    getMyProducts
 } = require("../controllers/farmerController");
 
 // ==========================================
@@ -21,6 +22,17 @@ router.get(
     authenticate,
     authorize("farmer"),
     getDashboard
+);
+
+// ==========================================
+// My Products
+// ==========================================
+
+router.get(
+    "/products",
+    authenticate,
+    authorize("farmer"),
+    getMyProducts
 );
 
 module.exports = router;
