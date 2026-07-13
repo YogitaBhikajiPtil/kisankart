@@ -14,6 +14,9 @@ const inventoryRoutes = require("./routes/inventoryRoutes");
 const analyticsRoutes = require("./routes/analyticsRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const customerProductRoutes = require("./routes/customerProductRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+
+
 const app = express();
 
 // ===============================
@@ -27,7 +30,11 @@ app.use(
     })
 );
 
-app.use(helmet());
+app.use(
+    helmet({
+        crossOriginResourcePolicy: false
+    })
+);
 
 app.use(morgan("dev"));
 
@@ -67,7 +74,10 @@ app.use(
     "/api/customer/products",
     customerProductRoutes
 );
-
+app.use(
+    "/api/customer/cart",
+    cartRoutes
+);
 // ===============================
 // 404 Route
 // ===============================
