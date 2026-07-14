@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | KisanKart</title>
+
+    <link rel="stylesheet"
+          href="./analytics.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>Sales Analytics</h1>
+
+    </header>
+
+    <section class="cards">
+
+        <div class="card">
+
+            <h3>Total Orders</h3>
+
+            <h2 id="totalOrders">0</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Total Revenue</h3>
+
+            <h2 id="totalRevenue">₹0</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Today's Revenue</h3>
+
+            <h2 id="todayRevenue">₹0</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Monthly Revenue</h3>
+
+            <h2 id="monthlyRevenue">₹0</h2>
+
+        </div>
+
+    </section>
+
+    <section class="chart-section">
+
+        <canvas id="salesChart"></canvas>
+
+    </section>
+
+    <section>
+
+        <h2>Top Selling Products</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Product</th>
+
+                    <th>Sold Quantity</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="topProducts"></tbody>
+
+        </table>
+
+    </section>
+
+    <section>
+
+        <h2>Recent Orders</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Order No</th>
+
+                    <th>Status</th>
+
+                    <th>Total</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="recentOrders"></tbody>
+
+        </table>
+
+    </section>
+
+</div>
+
+<script src="./analytics.js"></script>
+
+</body>
+
+</html>

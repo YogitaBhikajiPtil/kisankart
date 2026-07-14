@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Dashboard | KisanKart</title>
+
+    <link rel="stylesheet" href="./customer.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>KisanKart</h2>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    <i class="fa-solid fa-store"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Wishlist</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="orders.html">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="messages.html">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="notifications.html">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="login.html" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+
+                <h1>Customer Dashboard</h1>
+
+                <p>Welcome back,
+                    <span id="customerName">Customer</span>
+                </p>
+
+            </div>
+
+            <div class="header-right">
+
+                <button id="notificationBtn">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                </button>
+
+                <img
+                    src="../images/default-profile.png"
+                    alt="Profile">
+
+            </div>
+
+        </header>
+
+        <!-- Statistics -->
+
+        <section class="stats">
+
+            <div class="card">
+
+                <i class="fa-solid fa-basket-shopping"></i>
+
+                <h2 id="totalOrders">0</h2>
+
+                <p>Total Orders</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <h2 id="wishlistCount">0</h2>
+
+                <p>Wishlist</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-wallet"></i>
+
+                <h2 id="totalSpent">₹0</h2>
+
+                <p>Total Spent</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-seedling"></i>
+
+                <h2 id="savedMoney">₹0</h2>
+
+                <p>Money Saved</p>
+
+            </div>
+
+        </section>
+
+        <!-- Recent Orders -->
+
+        <section class="recent-orders">
+
+            <div class="section-header">
+
+                <h2>Recent Orders</h2>
+
+                <a href="#">View All</a>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order ID</th>
+
+                        <th>Product</th>
+
+                        <th>Farmer</th>
+
+                        <th>Amount</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="ordersTable">
+
+                    <!-- Dynamic Data -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <script src="./customer.js"></script>
+
+</body>
+
+</html>

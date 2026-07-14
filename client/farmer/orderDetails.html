@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Details | KisanKart</title>
+
+    <link rel="stylesheet"
+          href="./orderDetails.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>KisanKart</h2>
+
+        </div>
+
+        <ul>
+
+            <li>
+
+                <a href="./dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+            <li class="active">
+
+                <a href="./orders.html">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span>Orders</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <header>
+
+            <h1>Order Details</h1>
+
+            <button
+                id="backBtn">
+
+                Back
+
+            </button>
+
+        </header>
+
+        <!-- Order Information -->
+
+        <section class="card">
+
+            <h2>Order Information</h2>
+
+            <div id="orderInfo"></div>
+
+        </section>
+
+        <!-- Customer -->
+
+        <section class="card">
+
+            <h2>Customer Details</h2>
+
+            <div id="customerInfo"></div>
+
+        </section>
+
+        <!-- Address -->
+
+        <section class="card">
+
+            <h2>Delivery Address</h2>
+
+            <div id="addressInfo"></div>
+
+        </section>
+
+        <!-- Products -->
+
+        <section class="card">
+
+            <h2>Products</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Image</th>
+
+                        <th>Product</th>
+
+                        <th>Qty</th>
+
+                        <th>Price</th>
+
+                        <th>Total</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- Payment -->
+
+        <section class="card">
+
+            <h2>Payment</h2>
+
+            <div id="paymentInfo"></div>
+
+        </section>
+
+        <!-- Timeline -->
+
+        <section class="card">
+
+            <h2>Order Timeline</h2>
+
+            <div id="timeline"></div>
+
+        </section>
+
+        <!-- Actions -->
+
+        <section class="card">
+
+            <h2>Update Status</h2>
+
+            <select id="status">
+
+                <option value="Accepted">Accepted</option>
+
+                <option value="Packed">Packed</option>
+
+                <option value="Ready For Pickup">Ready For Pickup</option>
+
+                <option value="Out For Delivery">Out For Delivery</option>
+
+                <option value="Delivered">Delivered</option>
+
+                <option value="Cancelled">Cancelled</option>
+
+            </select>
+
+            <textarea
+
+                id="remarks"
+
+                placeholder="Remarks">
+
+            </textarea>
+
+            <button
+
+                id="updateBtn">
+
+                Update Status
+
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="./orderDetails.js"></script>
+
+</body>
+
+</html>

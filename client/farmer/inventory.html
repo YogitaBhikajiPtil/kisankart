@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Inventory | KisanKart</title>
+
+    <link rel="stylesheet" href="./inventory.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>KisanKart</h2>
+
+        </div>
+
+        <ul>
+
+            <li>
+
+                <a href="./dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./addProduct.html">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Add Product</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./myProducts.html">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <span>My Products</span>
+
+                </a>
+
+            </li>
+
+            <li class="active">
+
+                <a href="./inventory.html">
+
+                    <i class="fa-solid fa-warehouse"></i>
+
+                    <span>Inventory</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span>Orders</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Sales Analytics</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#" id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <header>
+
+            <div>
+
+                <h1>Inventory Management</h1>
+
+                <p>Monitor and manage product stock.</p>
+
+            </div>
+
+        </header>
+
+        <!-- Summary Cards -->
+
+        <section class="summary-cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-boxes-stacked"></i>
+
+                <h2 id="totalProducts">0</h2>
+
+                <p>Total Products</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-cubes"></i>
+
+                <h2 id="totalStock">0</h2>
+
+                <p>Total Stock</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h2 id="lowStock">0</h2>
+
+                <p>Low Stock</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                <h2 id="outOfStock">0</h2>
+
+                <p>Out Of Stock</p>
+
+            </div>
+
+        </section>
+
+        <!-- Filters -->
+
+        <section class="filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search Product">
+
+            <select id="categoryFilter">
+
+                <option value="">All Categories</option>
+
+            </select>
+
+        </section>
+
+        <!-- Inventory Table -->
+
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Product</th>
+
+                        <th>Category</th>
+
+                        <th>Available</th>
+
+                        <th>Total</th>
+
+                        <th>Reserved</th>
+
+                        <th>Low Stock</th>
+
+                        <th>Unit</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="inventoryTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- Pagination -->
+
+        <div
+            class="pagination"
+            id="pagination">
+
+        </div>
+
+    </main>
+
+    <script src="./inventory.js"></script>
+
+</body>
+
+</html>

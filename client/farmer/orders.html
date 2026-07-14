@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Orders | KisanKart</title>
+
+    <link rel="stylesheet"
+          href="./orders.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>KisanKart</h2>
+
+        </div>
+
+        <ul>
+
+            <li>
+
+                <a href="./dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./addProduct.html">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Add Product</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./myProducts.html">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <span>My Products</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./inventory.html">
+
+                    <i class="fa-solid fa-warehouse"></i>
+
+                    <span>Inventory</span>
+
+                </a>
+
+            </li>
+
+            <li class="active">
+
+                <a href="./orders.html">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span>Orders</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./analytics.html">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Analytics</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#"
+                   id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <header>
+
+            <h1>Orders</h1>
+
+            <p>Manage customer orders.</p>
+
+        </header>
+
+        <!-- Dashboard Cards -->
+
+        <section class="dashboard">
+
+            <div class="card">
+
+                <h2 id="pendingOrders">0</h2>
+
+                <p>Pending</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2 id="acceptedOrders">0</h2>
+
+                <p>Accepted</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2 id="packedOrders">0</h2>
+
+                <p>Packed</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2 id="deliveredOrders">0</h2>
+
+                <p>Delivered</p>
+
+            </div>
+
+        </section>
+
+        <!-- Filters -->
+
+        <section class="filters">
+
+            <input
+
+                type="text"
+
+                id="searchInput"
+
+                placeholder="Search Order Number">
+
+            <select id="statusFilter">
+
+                <option value="">All Status</option>
+
+                <option value="Pending">Pending</option>
+
+                <option value="Accepted">Accepted</option>
+
+                <option value="Packed">Packed</option>
+
+                <option value="Ready For Pickup">Ready For Pickup</option>
+
+                <option value="Out For Delivery">Out For Delivery</option>
+
+                <option value="Delivered">Delivered</option>
+
+                <option value="Cancelled">Cancelled</option>
+
+            </select>
+
+        </section>
+
+        <!-- Orders Table -->
+
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order No</th>
+
+                        <th>Customer</th>
+
+                        <th>Total</th>
+
+                        <th>Payment</th>
+
+                        <th>Status</th>
+
+                        <th>Date</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="ordersTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- Pagination -->
+
+        <div
+
+            id="pagination"
+
+            class="pagination">
+
+        </div>
+
+    </main>
+
+    <script src="./orders.js"></script>
+
+</body>
+
+</html>

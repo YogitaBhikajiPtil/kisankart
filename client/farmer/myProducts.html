@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Products | KisanKart</title>
+
+    <link rel="stylesheet" href="./myProducts.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>KisanKart</h2>
+
+        </div>
+
+        <ul>
+
+            <li>
+
+                <a href="./dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./addProduct.html">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Add Product</span>
+
+                </a>
+
+            </li>
+
+            <li class="active">
+
+                <a href="./myProducts.html">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <span>My Products</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#">
+
+                    <i class="fa-solid fa-warehouse"></i>
+
+                    <span>Inventory</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span>Orders</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Sales Analytics</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#" id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <header>
+
+            <h1>My Products</h1>
+
+            <a href="./addProduct.html" class="add-btn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Product
+
+            </a>
+
+        </header>
+
+        <!-- Filters -->
+
+        <section class="filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search product...">
+
+            <select id="categoryFilter">
+
+                <option value="">All Categories</option>
+
+            </select>
+
+            <select id="statusFilter">
+
+                <option value="">All Status</option>
+
+                <option value="Available">Available</option>
+
+                <option value="Out Of Stock">Out Of Stock</option>
+
+                <option value="Hidden">Hidden</option>
+
+            </select>
+
+        </section>
+
+        <!-- Products Table -->
+
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Image</th>
+
+                        <th>Name</th>
+
+                        <th>Category</th>
+
+                        <th>Price</th>
+
+                        <th>Stock</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="productsTable">
+
+                    <!-- Dynamic Data -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- Pagination -->
+
+        <div class="pagination" id="pagination">
+
+        </div>
+
+    </main>
+
+    <script src="./myProducts.js"></script>
+
+</body>
+
+</html>

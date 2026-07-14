@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    display:flex;
+    min-height:100vh;
+    background:#f5f7fa;
+}
+
+/* ================= Sidebar ================= */
+
+.sidebar{
+    width:260px;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    background:#1b5e20;
+    color:#ffffff;
+}
+
+.logo{
+    padding:25px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.logo h2{
+    font-size:30px;
+}
+
+.sidebar ul{
+    list-style:none;
+    padding:20px 0;
+}
+
+.sidebar li{
+    margin:8px 15px;
+}
+
+.sidebar li a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:#ffffff;
+    padding:14px 18px;
+    border-radius:10px;
+}
+
+.sidebar li.active a,
+.sidebar li a:hover{
+    background:#2e7d32;
+}
+
+/* ================= Main ================= */
+
+.main-content{
+    flex:1;
+    margin-left:260px;
+    padding:30px;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+header h1{
+    color:#1b5e20;
+}
+
+header button{
+    background:#1b5e20;
+    color:#ffffff;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+header button:hover{
+    background:#2e7d32;
+}
+
+/* ================= Cards ================= */
+
+.card{
+    background:#ffffff;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.card h2{
+    margin-bottom:20px;
+    color:#1b5e20;
+}
+
+/* ================= Info ================= */
+
+.info-row{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    margin-bottom:12px;
+}
+
+.info-title{
+    font-weight:600;
+}
+
+.info-value{
+    color:#555555;
+}
+
+/* ================= Table ================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#2e7d32;
+    color:#ffffff;
+}
+
+th,
+td{
+    padding:14px;
+    text-align:left;
+}
+
+tbody tr{
+    border-bottom:1px solid #eeeeee;
+}
+
+.product-image{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* ================= Timeline ================= */
+
+.timeline-item{
+    padding:12px 0;
+    border-left:4px solid #2e7d32;
+    padding-left:15px;
+    margin-bottom:15px;
+}
+
+.timeline-item h4{
+    color:#1b5e20;
+}
+
+.timeline-item p{
+    color:#666666;
+    margin-top:5px;
+}
+
+/* ================= Form ================= */
+
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #cccccc;
+    border-radius:8px;
+    outline:none;
+}
+
+textarea{
+    resize:vertical;
+    min-height:100px;
+}
+
+#updateBtn{
+    background:#1b5e20;
+    color:#ffffff;
+    border:none;
+    padding:12px 24px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#updateBtn:hover{
+    background:#2e7d32;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:992px){
+
+    .sidebar{
+        width:90px;
+    }
+
+    .logo h2,
+    .sidebar span{
+        display:none;
+    }
+
+    .sidebar li a{
+        justify-content:center;
+    }
+
+    .main-content{
+        margin-left:90px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .main-content{
+        padding:20px;
+    }
+
+    table{
+        min-width:800px;
+    }
+
+    .card{
+        overflow-x:auto;
+    }
+
+    .info-row{
+        grid-template-columns:1fr;
+        gap:5px;
+    }
+
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KisanKart Checkout</title>
+
+    <link rel="stylesheet" href="./checkout.css">
+
+</head>
+
+<body>
+
+
+<nav class="navbar">
+
+    <h2>KisanKart</h2>
+
+    <a href="./cart.html">Back to Cart</a>
+
+</nav>
+
+
+<div class="checkout-container">
+
+
+    <div class="address-section">
+
+
+        <h2>Delivery Address</h2>
+
+
+        <form id="addressForm">
+
+
+            <input 
+            id="fullName"
+            placeholder="Full Name"
+            required>
+
+
+            <input 
+            id="mobile"
+            placeholder="Mobile Number"
+            required>
+
+
+            <input 
+            id="addressLine1"
+            placeholder="Address Line 1"
+            required>
+
+
+            <input 
+            id="addressLine2"
+            placeholder="Address Line 2">
+
+
+            <input 
+            id="city"
+            placeholder="City"
+            required>
+
+
+            <input 
+            id="state"
+            placeholder="State"
+            required>
+
+
+            <input 
+            id="pincode"
+            placeholder="Pincode"
+            required>
+
+
+            <button type="submit">
+
+                Save Address
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+
+    <div class="payment-section">
+
+
+        <h2>Payment</h2>
+
+
+        <label>
+
+            <input 
+            type="radio"
+            name="payment"
+            value="COD"
+            checked>
+
+            Cash On Delivery
+
+        </label>
+
+
+        <br>
+
+
+        <label>
+
+            <input 
+            type="radio"
+            name="payment"
+            value="ONLINE">
+
+            Online Payment
+
+        </label>
+
+
+
+        <button id="placeOrderBtn">
+
+            Place Order
+
+        </button>
+
+
+    </div>
+
+
+
+</div>
+
+
+<script src="./checkout.js"></script>
+
+
+</body>
+
+</html>

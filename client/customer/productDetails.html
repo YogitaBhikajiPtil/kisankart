@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details | KisanKart</title>
+
+    <link rel="stylesheet"
+          href="./productDetails.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <h2>KisanKart</h2>
+
+        <a href="./products.html">← Back to Products</a>
+
+    </nav>
+
+    <!-- Product -->
+
+    <div class="container">
+
+        <!-- Images -->
+
+        <div class="left">
+
+            <img
+
+                id="mainImage"
+
+                src="../assets/no-image.png"
+
+                alt="Product">
+
+            <div
+
+                id="thumbnailContainer"
+
+                class="thumbnails">
+
+            </div>
+
+        </div>
+
+        <!-- Details -->
+
+        <div class="right">
+
+            <h1 id="productName"></h1>
+
+            <h2 id="productPrice"></h2>
+
+            <p id="productDescription"></p>
+
+            <hr>
+
+            <h3>Farmer Information</h3>
+
+            <p id="farmerName"></p>
+
+            <p id="farmerPhone"></p>
+
+            <hr>
+
+            <h3>Stock</h3>
+
+            <p id="stock"></p>
+
+            <div class="quantity">
+
+                <button id="minusBtn">-</button>
+
+                <input
+
+                    type="number"
+
+                    id="quantity"
+
+                    value="1"
+
+                    min="1">
+
+                <button id="plusBtn">+</button>
+
+            </div>
+
+            <div class="buttons">
+
+                <button id="cartBtn">
+
+                    Add To Cart
+
+                </button>
+
+                <button id="wishlistBtn">
+
+                    Wishlist
+
+                </button>
+
+                <button id="buyBtn">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Reviews -->
+
+    <section class="reviews">
+
+        <h2>Customer Reviews</h2>
+
+        <div id="reviewContainer">
+
+        </div>
+
+    </section>
+
+    <script src="./productDetails.js"></script>
+
+</body>
+
+</html>
