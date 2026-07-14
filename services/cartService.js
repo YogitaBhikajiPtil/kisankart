@@ -1,37 +1,26 @@
 const {
-
     Cart,
-
     CartItem,
-
     Product,
-
     ProductImage
-
 } = require("../models");
 
 // ==========================================
-// Get Or Create Cart
+// Get or Create Cart
 // ==========================================
 
-const getOrCreateCart = async (customerId) => {
+const getOrCreateCart = async (userId) => {
 
     let cart = await Cart.findOne({
-
         where: {
-
-            customerId
-
+            userId
         }
-
     });
 
     if (!cart) {
 
         cart = await Cart.create({
-
-            customerId
-
+            userId
         });
 
     }
@@ -44,33 +33,43 @@ const getOrCreateCart = async (customerId) => {
 // Get Cart
 // ==========================================
 
-const getCart = async (customerId) => {
+const getCart = async (userId) => {
 
-    const cart = await getOrCreateCart(customerId);
+    const cart = await getOrCreateCart(userId);
 
-    const items = await CartItem.findAll({
+    const cartData = await Cart.findOne({
 
         where: {
-
-            cartId: cart.id
-
+            id: cart.id
         },
 
         include: [
 
             {
 
-                model: Product,
+                model: CartItem,
 
-                as: "product",
+                as: "items",
 
                 include: [
 
                     {
 
-                        model: ProductImage,
+                        model: Product,
 
-                        as: "images"
+                        as: "product",
+
+                        include: [
+
+                            {
+
+                                model: ProductImage,
+
+                                as: "images"
+
+                            }
+
+                        ]
 
                     }
 
@@ -84,7 +83,7 @@ const getCart = async (customerId) => {
 
     let total = 0;
 
-    items.forEach(item => {
+    cartData.items.forEach(item => {
 
         total += item.quantity * item.product.price;
 
@@ -92,9 +91,7 @@ const getCart = async (customerId) => {
 
     return {
 
-        id: cart.id,
-
-        items,
+        items: cartData.items,
 
         total
 
@@ -106,9 +103,9 @@ const getCart = async (customerId) => {
 // Add To Cart
 // ==========================================
 
-const addToCart = async (customerId, data) => {
+const addToCart = async (userId, data) => {
 
-    const cart = await getOrCreateCart(customerId);
+    const cart = await getOrCreateCart(userId);
 
     const product = await Product.findByPk(data.productId);
 
@@ -118,7 +115,7 @@ const addToCart = async (customerId, data) => {
 
     }
 
-    let cartItem = await CartItem.findOne({
+    let item = await CartItem.findOne({
 
         where: {
 
@@ -130,15 +127,15 @@ const addToCart = async (customerId, data) => {
 
     });
 
-    if (cartItem) {
+    if (item) {
 
-        cartItem.quantity += Number(data.quantity);
+        item.quantity += Number(data.quantity);
 
-        await cartItem.save();
+        await item.save();
 
     } else {
 
-        cartItem = await CartItem.create({
+        item = await CartItem.create({
 
             cartId: cart.id,
 
@@ -150,17 +147,17 @@ const addToCart = async (customerId, data) => {
 
     }
 
-    return cartItem;
+    return item;
 
 };
 
 // ==========================================
-// Update Cart
+// Update Quantity
 // ==========================================
 
 const updateCart = async (
 
-    customerId,
+    userId,
 
     cartItemId,
 
@@ -168,9 +165,19 @@ const updateCart = async (
 
 ) => {
 
-    await getOrCreateCart(customerId);
+    const cart = await getOrCreateCart(userId);
 
-    const item = await CartItem.findByPk(cartItemId);
+    const item = await CartItem.findOne({
+
+        where: {
+
+            id: cartItemId,
+
+            cartId: cart.id
+
+        }
+
+    });
 
     if (!item) {
 
@@ -192,15 +199,25 @@ const updateCart = async (
 
 const removeCartItem = async (
 
-    customerId,
+    userId,
 
     cartItemId
 
 ) => {
 
-    await getOrCreateCart(customerId);
+    const cart = await getOrCreateCart(userId);
 
-    const item = await CartItem.findByPk(cartItemId);
+    const item = await CartItem.findOne({
+
+        where: {
+
+            id: cartItemId,
+
+            cartId: cart.id
+
+        }
+
+    });
 
     if (!item) {
 
@@ -216,9 +233,9 @@ const removeCartItem = async (
 // Clear Cart
 // ==========================================
 
-const clearCart = async (customerId) => {
+const clearCart = async (userId) => {
 
-    const cart = await getOrCreateCart(customerId);
+    const cart = await getOrCreateCart(userId);
 
     await CartItem.destroy({
 

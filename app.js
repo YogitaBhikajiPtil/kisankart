@@ -15,8 +15,12 @@ const analyticsRoutes = require("./routes/analyticsRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const customerProductRoutes = require("./routes/customerProductRoutes");
 const cartRoutes = require("./routes/cartRoutes");
-
-
+const wishlistRoutes = require("./routes/wishlistRoutes");
+const addressRoutes = require("./routes/addressRoutes");
+const customerOrderRoutes = require("./routes/customerOrderRoutes");
+const checkoutRoutes = require("./routes/checkoutRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const farmerOrderRoutes = require("./routes/farmerOrderRoutes");
 const app = express();
 
 // ===============================
@@ -77,6 +81,39 @@ app.use(
 app.use(
     "/api/customer/cart",
     cartRoutes
+);
+
+app.use(
+    "/api/customer/wishlist",
+    wishlistRoutes
+);
+
+app.use(
+
+    "/api/customer/address",
+
+    addressRoutes
+
+);
+
+app.use(
+    "/api/customer/orders",
+    customerOrderRoutes
+);
+
+app.use("/api/customer/checkout", checkoutRoutes);
+
+app.use(
+
+    "/api/admin",
+
+    adminRoutes
+
+);
+
+app.use(
+    "/api/farmer/orders",
+    farmerOrderRoutes
 );
 // ===============================
 // 404 Route
