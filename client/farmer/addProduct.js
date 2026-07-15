@@ -180,6 +180,13 @@ form.addEventListener("submit", async (event) => {
 
         const data = await response.json();
 
+        console.log(data);
+
+if (!response.ok) {
+    alert(JSON.stringify(data.errors));
+    return;
+}
+
         if (!response.ok) {
 
             throw new Error(data.message);

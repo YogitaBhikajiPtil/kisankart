@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Delivery Dashboard | KisanKart</title>
+
+    <link rel="stylesheet"
+          href="./dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>KisanKart</h2>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+
+                <a href="./dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./availableOrders.html">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <span>Available Orders</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="./myDeliveries.html">
+
+                    <i class="fa-solid fa-truck"></i>
+
+                    <span>My Deliveries</span>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#"
+                   id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header>
+
+            <h1>Delivery Dashboard</h1>
+
+            <p>Manage assigned deliveries.</p>
+
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h2 id="availableCount">0</h2>
+
+                <p>Available Orders</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2 id="assignedCount">0</h2>
+
+                <p>Assigned</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2 id="deliveredCount">0</h2>
+
+                <p>Delivered</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="./dashboard.js"></script>
+
+</body>
+
+</html>

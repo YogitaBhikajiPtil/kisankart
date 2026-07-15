@@ -45,7 +45,7 @@ const wishlistBtn = document.getElementById("wishlistBtn");
 const buyBtn = document.getElementById("buyBtn");
 
 const reviewContainer = document.getElementById("reviewContainer");
-
+const chatBtn = document.getElementById("chatBtn");
 // ==========================================
 // Load Product
 // ==========================================
@@ -91,6 +91,7 @@ async function loadProduct() {
     }
 
 }
+
 
 // ==========================================
 // Render Product
@@ -164,6 +165,28 @@ function renderProduct(product) {
         `;
 
     });
+
+    chatBtn.onclick = () => {
+
+    localStorage.setItem(
+
+        "selectedChat",
+
+        JSON.stringify({
+
+            id: product.farmer.id,
+
+            name: product.farmer.name
+
+        })
+
+    );
+
+    window.location.href =
+
+        `./chat.html?userId=${product.farmer.id}`;
+
+};
 
 }
 
@@ -336,6 +359,8 @@ buyBtn.addEventListener(
     }
 
 );
+
+
 
 // ==========================================
 // Init

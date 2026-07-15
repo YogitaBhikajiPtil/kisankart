@@ -50,6 +50,7 @@ const updateBtn = document.getElementById("updateBtn");
 
 const backBtn = document.getElementById("backBtn");
 
+const chatBtn = document.getElementById("chatBtn");
 // ==========================================
 // Load Order
 // ==========================================
@@ -254,7 +255,7 @@ function renderOrder(order) {
 
             <div class="info-value">
 
-                ${order.payment.status}
+                ${order.payment.paymentStatus}
 
             </div>
 
@@ -274,7 +275,7 @@ function renderOrder(order) {
 
                     <img
 
-                        src="${item.product.images.length ? item.product.images[0].imageUrl : '../assets/no-image.png'}"
+                        src="${item.product.images.length ? 'http://localhost:5000/' + item.product.images[0].imageUrl : '../assets/no-image.png'}"
 
                         class="product-image">
 
@@ -307,6 +308,8 @@ function renderOrder(order) {
             </tr>
 
         `;
+
+        
 
     });
 
@@ -344,6 +347,13 @@ function renderOrder(order) {
 
     status.value = order.orderStatus;
 
+   chatBtn.onclick = () => {
+
+    window.location.href =
+
+    `./chat.html?userId=${order.customer.id}`;
+
+};
 }
 
 // ==========================================
