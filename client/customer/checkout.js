@@ -249,17 +249,20 @@ async()=>{
         }
 
 
+const createdOrder = data.orders[0];
 
-        alert(
+if (paymentMethod === "ONLINE") {
 
-            "Order placed successfully"
+    window.location.href =
+        `payment.html?orderId=${createdOrder.id}`;
 
-        );
+} else {
 
+    alert("Order placed successfully");
 
+    window.location.href = "./orders.html";
 
-        window.location.href="./orders.html";
-
+}
 
 
     }
