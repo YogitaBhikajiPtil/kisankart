@@ -20,7 +20,7 @@ const Order = sequelize.define(
 
             allowNull: false,
 
-            unique: true
+        
 
         },
 
