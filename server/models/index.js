@@ -5,15 +5,15 @@ const ProductImage = require("./productImage");
 const Inventory = require("./inventory");
 const Order = require("./order");
 const OrderItem = require("./orderItem");
-const OrderStatusHistory = require("./orderStatusHistory");
-const Address = require("./address");
-const Payment = require("./payment");
-const Cart = require("./cart");
-const CartItem = require("./cartItem");
-const Wishlist = require("./wishlist");
-const Review = require("./review");
-const Notification = require("./notification");
-const Message = require("./message");
+const OrderStatusHistory = require("./OrderStatusHistory");
+const Address = require("./Address");
+const Payment = require("./Payment");
+const Cart = require("./Cart");
+const CartItem = require("./CartItem");
+const Wishlist = require("./Wishlist");
+const Review = require("./Review");
+const Notification = require("./Notification");
+const Message = require("./Message");
 
 
 // ==========================================
