@@ -5,7 +5,8 @@ const {
     Product,
     Category,
     ProductImage,
-    Inventory
+    Inventory,
+    Order
 } = require("../models");
 
 // ==========================================
@@ -63,12 +64,46 @@ const getDashboard = async (farmerId) => {
 
     });
 
+    
+
+let totalOrders = 0;
+let totalRevenue = 0;
+
+
+const orders = await Order.findAll({
+
+    where:{
+        farmerId
+    }
+
+});
+
+console.log("Farmer ID:", farmerId);
+console.log("Orders Found:", orders.length);
+console.log(
+    orders.map(order => ({
+        id: order.id,
+        farmerId: order.farmerId,
+        totalAmount: order.totalAmount
+    }))
+);
+
+totalOrders = orders.length;
+
+
+totalRevenue = orders.reduce(
+    (sum, order)=>{
+
+        return sum + Number(order.totalAmount);
+
+    },
+    0
+);
     // Dashboard Summary
 
     const totalProducts = products.length;
 
-    let totalOrders = 0;
-    let totalRevenue = 0;
+    
     let lowStockProducts = 0;
 
     products.forEach(product => {

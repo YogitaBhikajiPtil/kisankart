@@ -86,6 +86,8 @@ function renderDashboard(data) {
 
     data.topProducts.forEach(item => {
 
+        console.log("Top Products:", data.topProducts);
+
         topProducts.innerHTML += `
 
             <tr>
@@ -98,7 +100,7 @@ function renderDashboard(data) {
 
                 <td>
 
-                    ${item.dataValues.soldQuantity}
+                    ${item.soldQuantity || 0}
 
                 </td>
 

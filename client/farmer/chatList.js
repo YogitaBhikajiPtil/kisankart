@@ -26,7 +26,7 @@ if (
 // API
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/chat/users";
+const API_URL = "http://13.201.15.236:5000/api/chat/users";
 
 const chatList = document.getElementById("chatList");
 

@@ -10,11 +10,11 @@ if(!token){
 
 
 const ADDRESS_API = 
-"http://localhost:5000/api/customer/address";
+"http://13.201.15.236:5000/api/customer/address";
 
 
 const CHECKOUT_API = 
-"http://localhost:5000/api/customer/checkout";
+"http://13.201.15.236:5000/api/customer/checkout";
 
 
 

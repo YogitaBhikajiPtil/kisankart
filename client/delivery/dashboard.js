@@ -18,7 +18,7 @@ if (
 
 }
 
-const API="http://localhost:5000/api/delivery";
+const API="http://13.201.15.236:5000/api/delivery";
 
 const availableCount=document.getElementById("availableCount");
 

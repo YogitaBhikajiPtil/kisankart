@@ -8,6 +8,9 @@ const getDashboard = async (req, res, next) => {
 
     try {
 
+         console.log("Farmer dashboard controller called");
+    console.log("User:", req.user);
+        
         const dashboard = await farmerService.getDashboard(
             req.user.id
         );

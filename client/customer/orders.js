@@ -10,7 +10,7 @@ if(!token){
 
 
 const API = 
-"http://localhost:5000/api/customer/orders";
+"http://13.201.15.236:5000/api/customer/orders";
 
 
 const ordersContainer = 

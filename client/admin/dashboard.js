@@ -3,7 +3,7 @@ const token = localStorage.getItem("token");
 async function loadDashboard() {
 
     const response = await fetch(
-        "http://localhost:5000/api/admin/dashboard",
+        "http://13.201.15.236:5000/api/admin/dashboard",
         {
             headers:{
                 Authorization:`Bearer ${token}`

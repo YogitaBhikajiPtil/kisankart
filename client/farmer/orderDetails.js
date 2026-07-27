@@ -18,7 +18,7 @@ if (!token || !user || user.role !== "farmer") {
 // API
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/farmer/orders";
+const API_URL = "http://13.201.15.236:5000/api/farmer/orders";
 
 const orderId = new URLSearchParams(
 
@@ -275,7 +275,7 @@ function renderOrder(order) {
 
                     <img
 
-                        src="${item.product.images.length ? 'http://localhost:5000/' + item.product.images[0].imageUrl : '../assets/no-image.png'}"
+                        src="${item.product.images.length ? 'http://13.201.15.236:5000/' + item.product.images[0].imageUrl : '../assets/no-image.png'}"
 
                         class="product-image">
 

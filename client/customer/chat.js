@@ -16,7 +16,7 @@ if (!token || !user) {
 // Socket
 // ==========================================
 
-const socket = io("http://localhost:5000");
+const socket = io("http://13.201.15.236:5000");
 
 socket.emit("join", user.id);
 
@@ -24,7 +24,7 @@ socket.emit("join", user.id);
 // API
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/chat";
+const API_URL = "http://13.201.15.236:5000/api/chat";
 
 // ==========================================
 // DOM

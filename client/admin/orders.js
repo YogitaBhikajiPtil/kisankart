@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 const API =
-"http://localhost:5000/api/admin/orders";
+"http://13.201.15.236:5000/api/admin/orders";
 
 async function loadOrders(){
 

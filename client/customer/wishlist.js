@@ -4,8 +4,8 @@ if (!token) {
     window.location.href = "../login.html";
 }
 
-const WISHLIST_API = "http://localhost:5000/api/customer/wishlist";
-const CART_API = "http://localhost:5000/api/customer/cart";
+const WISHLIST_API = "http://13.201.15.236:5000/api/customer/wishlist";
+const CART_API = "http://13.201.15.236:5000/api/customer/cart";
 
 const wishlistContainer = document.getElementById("wishlistContainer");
 

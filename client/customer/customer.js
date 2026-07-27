@@ -56,7 +56,7 @@ async function loadDashboard() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/customer/dashboard",
+            "http://13.201.15.236:5000/api/customer/dashboard",
             {
 
                 headers: {

@@ -75,6 +75,8 @@ app.use("/api/customer", customerRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/farmer", farmerRoutes);
 app.use("/api/categories", categoryRoutes);
+
+
 app.use("/uploads", express.static("uploads"));
 app.use("/api/inventory", inventoryRoutes);
 app.use("/api/farmer/analytics", analyticsRoutes);

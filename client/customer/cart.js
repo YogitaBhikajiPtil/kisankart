@@ -4,7 +4,7 @@ if (!token) {
     window.location.href = "../login.html";
 }
 
-const API_URL = "http://localhost:5000/api/customer/cart";
+const API_URL = "http://13.201.15.236:5000/api/customer/cart";
 
 const cartItems = document.getElementById("cartItems");
 const totalItems = document.getElementById("totalItems");
