@@ -33,11 +33,15 @@ const Product = sequelize.define(
     allowNull: false
 },
 
-        price: {
-            type: DataTypes.DECIMAL(10, 2),
-            allowNull: false
-        },
+       price: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false
+},
 
+marketPrice: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false
+},
         stock: {
             type: DataTypes.INTEGER,
             allowNull: false,

@@ -7,7 +7,7 @@ if (!token) {
 }
 
 const PAYMENT_API =
-    "http://13.201.15.236:5000/api/customer/payment";
+    "http://localhost:5000/api/customer/payment";
 
 const params = new URLSearchParams(window.location.search);
 

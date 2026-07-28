@@ -10,11 +10,11 @@ if(!token){
 
 
 const ADDRESS_API = 
-"http://13.201.15.236:5000/api/customer/address";
+"http://localhost:5000/api/customer/address";
 
 
 const CHECKOUT_API = 
-"http://13.201.15.236:5000/api/customer/checkout";
+"http://localhost:5000/api/customer/checkout";
 
 
 
@@ -218,16 +218,17 @@ async()=>{
                 },
 
 
-                body:JSON.stringify({
+                body: JSON.stringify({
 
+    addressId,
 
-                    addressId,
+    paymentMethod,
 
+    buyNow: JSON.parse(
+        localStorage.getItem("buyNow")
+    )
 
-                    paymentMethod
-
-
-                })
+})
 
 
             }
@@ -259,6 +260,7 @@ if (paymentMethod === "ONLINE") {
 } else {
 
     alert("Order placed successfully");
+    localStorage.removeItem("buyNow");
 
     window.location.href = "./orders.html";
 

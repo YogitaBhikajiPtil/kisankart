@@ -7,7 +7,7 @@ if(!token){
 }
 
 
-const API_URL = "http://localhost:5000/api/farmer/profile";
+const API_URL = "http://localhost:5000/api/customer/profile";
 
 
 const nameInput = document.getElementById("name");

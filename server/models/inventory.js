@@ -22,11 +22,7 @@ const Inventory = sequelize.define(
             defaultValue: 0
         },
 
-        reservedQuantity: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-        },
+        
 
         availableQuantity: {
             type: DataTypes.INTEGER,

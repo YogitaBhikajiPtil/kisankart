@@ -55,7 +55,9 @@ const createOrder = async (
 
             addressId,
 
-            paymentMethod
+            paymentMethod,
+
+            buyNow
 
         } = data;
 
@@ -88,7 +90,152 @@ const createOrder = async (
 
         }
 
+// ==========================================
+// BUY NOW FLOW
+// ==========================================
 
+if (buyNow) {
+
+    const product = await Product.findByPk(
+        buyNow.productId,
+        {
+            transaction
+        }
+    );
+
+
+    if (!product) {
+
+        throw new Error("Product not found");
+
+    }
+
+
+    if (product.stock < buyNow.quantity) {
+
+        throw new Error("Insufficient stock");
+
+    }
+
+
+    const subtotal =
+        Number(product.price) *
+        Number(buyNow.quantity);
+
+
+    const deliveryCharge = 40;
+
+    const tax = subtotal * 0.05;
+
+
+    const totalAmount =
+        subtotal +
+        deliveryCharge +
+        tax;
+
+
+
+    const order = await Order.create({
+
+        orderNumber: generateOrderNumber(),
+
+        customerId: userId,
+
+        farmerId: product.farmerId,
+
+        addressId,
+
+        subtotal,
+
+        deliveryCharge,
+
+        tax,
+
+        totalAmount,
+
+        paymentMethod,
+
+        paymentStatus:"Pending"
+
+
+    },{
+        transaction
+    });
+
+
+
+    await OrderItem.create({
+
+        orderId: order.id,
+
+        productId: product.id,
+
+        quantity: buyNow.quantity,
+
+        unitPrice: product.price,
+
+        totalPrice:
+            Number(product.price) *
+            Number(buyNow.quantity)
+
+    },{
+        transaction
+    });
+
+
+
+    product.stock -= buyNow.quantity;
+
+
+    if(product.stock === 0){
+
+        product.status="Out Of Stock";
+
+    }
+
+
+    await product.save({
+        transaction
+    });
+
+
+
+    await Payment.create({
+
+        orderId: order.id,
+
+        paymentMethod,
+
+        paymentStatus:"Pending"
+
+    },{
+        transaction
+    });
+
+
+
+    await OrderStatusHistory.create({
+
+        orderId: order.id,
+
+        status:"Pending",
+
+        remarks:"Order placed successfully",
+
+        updatedBy:userId
+
+    },{
+        transaction
+    });
+
+
+
+    await transaction.commit();
+
+
+    return [order];
+
+}
 
         // 2. Get Cart
 

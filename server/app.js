@@ -14,7 +14,7 @@ const farmerRoutes = require("./routes/farmerRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const inventoryRoutes = require("./routes/inventoryRoutes");
 const analyticsRoutes = require("./routes/analyticsRoutes");
-const profileRoutes = require("./routes/profileRoutes");
+const deliveryRoutes = require("./routes/deliveryRoutes");
 const customerProductRoutes = require("./routes/customerProductRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const wishlistRoutes = require("./routes/wishlistRoutes");
@@ -25,7 +25,8 @@ const adminRoutes = require("./routes/adminRoutes");
 const farmerOrderRoutes = require("./routes/farmerOrderRoutes");
 const chatRoutes = require("./routes/chatRoutes")
 const paymentRoutes = require("./routes/paymentRoutes");
-
+const customerProfileRoutes = require("./routes/customerProfileRoutes");
+const farmerProfileRoutes = require("./routes/farmerProfileRoutes");
 
 
 
@@ -75,14 +76,23 @@ app.use("/api/customer", customerRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/farmer", farmerRoutes);
 app.use("/api/categories", categoryRoutes);
-
+app.use(
+    "/api/delivery",
+    deliveryRoutes
+);
 
 app.use("/uploads", express.static("uploads"));
 app.use("/api/inventory", inventoryRoutes);
 app.use("/api/farmer/analytics", analyticsRoutes);
 app.use(
     "/api/farmer/profile",
-    profileRoutes
+    farmerProfileRoutes
+);
+
+
+app.use(
+    "/api/customer/profile",
+    customerProfileRoutes
 );
 
 app.use(

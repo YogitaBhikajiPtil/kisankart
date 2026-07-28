@@ -24,7 +24,7 @@ if (user.role !== "farmer") {
 // API
 // ==========================================
 
-const API_URL = "http://13.201.15.236:5000/api/farmer/orders";
+const API_URL = "http://localhost:5000/api/farmer/orders";
 
 // ==========================================
 // DOM

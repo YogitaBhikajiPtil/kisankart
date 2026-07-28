@@ -81,7 +81,6 @@ const addProduct = async (
 
         availableQuantity: totalQuantity,
 
-        reservedQuantity: 0,
 
         lowStockThreshold,
 

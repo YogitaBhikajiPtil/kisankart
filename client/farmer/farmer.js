@@ -84,7 +84,7 @@ async function loadDashboard() {
         data.products.forEach(product => {
 
              const image = product.images.length
-            ? `http://13.201.15.236:5000${product.images[0].imageUrl}`
+            ? `http://localhost:5000${product.images[0].imageUrl}`
             : "../images/no-image.png";
 
             productTable.innerHTML += `
@@ -200,7 +200,7 @@ async function deleteProduct(id) {
 
         const response = await fetch(
 
-            `http://13.201.15.236:5000/api/products/${id}`,
+            `http://localhost:5000/api/products/${id}`,
 
             {
                 method: "DELETE",

@@ -28,7 +28,7 @@ if (user.role !== "farmer") {
 // API
 // ==========================================
 
-const API_URL = "http://13.201.15.236:5000/api";
+const API_URL = "http://localhost:5000/api";
 
 // ==========================================
 // Product Id
@@ -168,7 +168,7 @@ async function loadProduct() {
                 <div class="image-card">
 
                     <img
-                        src="http://13.201.15.236:5000${image.imageUrl}"
+                        src="http://localhost:5000${image.imageUrl}"
                         alt="Product">
 
                     <button

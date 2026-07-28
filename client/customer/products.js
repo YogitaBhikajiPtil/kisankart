@@ -9,9 +9,9 @@ if(!token){
 
 
 
-const API_URL = "http://13.201.15.236:5000/api/customer/products";
+const API_URL = "http://localhost:5000/api/customer/products";
 
-const BACKEND_URL = "http://13.201.15.236:5000";
+const BACKEND_URL = "http://localhost:5000";
 
 const productContainer = document.getElementById(
 

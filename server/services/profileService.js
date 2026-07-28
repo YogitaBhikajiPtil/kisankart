@@ -100,7 +100,7 @@ const updateProfile = async (
     });
 
 
-    return user;
+    return user; 
 
 };
 

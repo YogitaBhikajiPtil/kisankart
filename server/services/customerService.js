@@ -1,4 +1,10 @@
-const User = require("../models/user");
+const {
+    User,
+    Order,
+    OrderItem,
+    Product,
+    Wishlist
+} = require("../models");
 
 // ==========================================
 // Customer Dashboard Service
@@ -6,58 +12,191 @@ const User = require("../models/user");
 
 const getDashboard = async (userId) => {
 
-    // Logged In User
 
     const user = await User.findByPk(userId, {
+
         attributes: [
             "id",
             "name",
             "email",
             "role"
         ]
+
     });
 
+
     if (!user) {
+
         throw new Error("Customer not found.");
+
     }
 
-    /*
-        NOTE
 
-        Orders, Wishlist, Cart, Payments and other
-        modules are not created yet.
 
-        Currently returning dummy data.
+    // Wishlist Count
 
-        Later this service will fetch data from:
+    const wishlistCount = await Wishlist.count({
 
-        Order Model
-        Wishlist Model
-        Payment Model
-        Product Model
-    */
+        where: {
+            userId
+        }
 
-    return {
+    });
 
-        user,
 
-        summary: {
 
-            totalOrders: 0,
+    // Fetch Customer Orders
 
-            wishlistCount: 0,
+    const orders = await Order.findAll({
 
-            totalSpent: 0,
+        where: {
 
-            savedMoney: 0
+            customerId: userId,
+            
 
         },
 
-        orders: []
+
+        include: [
+
+            {
+                model: User,
+                as: "farmer",
+                attributes: ["name"]
+            },
+
+
+            {
+                model: OrderItem,
+                as: "items",
+
+                include: [
+
+                    {
+                        model: Product,
+                        as: "product",
+                        attributes: ["name",
+                            "marketPrice"
+                        ]
+                    }
+
+                ]
+
+            }
+
+        ],
+
+
+        order: [
+            ["createdAt", "DESC"]
+        ]
+
+    });
+
+
+
+    let totalSpent = 0;
+
+    let savedMoney = 0;
+
+
+orders.forEach(order => {
+
+    // Total spent and money saved only for delivered orders
+
+    if (order.orderStatus === "Delivered") {
+
+
+        totalSpent += Number(order.totalAmount);
+
+
+        order.items.forEach(item => {
+
+
+            if (item.product && item.product.marketPrice) {
+
+
+                savedMoney +=
+                    (
+                        Number(item.product.marketPrice)
+                        -
+                        Number(item.unitPrice)
+                    )
+                    *
+                    Number(item.quantity);
+
+
+            }
+
+
+        });
+
+
+    }
+
+
+});
+
+
+
+
+    const recentOrders = orders.slice(0, 5).map(order => ({
+
+
+        id: order.orderNumber,
+
+
+        product: order.items
+            .map(item => item.product?.name)
+            .join(", "),
+
+
+        farmer: order.farmer?.name || "-",
+
+
+        amount: Number(order.totalAmount),
+
+
+        status: order.orderStatus
+
+
+    }));
+
+
+
+
+    return {
+
+
+        user,
+
+
+        summary: {
+
+
+            totalOrders: orders.length,
+
+
+            wishlistCount,
+
+
+            totalSpent,
+
+
+            savedMoney
+
+
+        },
+
+
+        orders: recentOrders
+
 
     };
 
+
 };
+
 
 module.exports = {
 

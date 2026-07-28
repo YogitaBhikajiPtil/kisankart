@@ -42,7 +42,7 @@ async function loadCategories() {
     try {
 
         const response = await fetch(
-            "http://13.201.15.236:5000/api/categories"
+            "http://localhost:5000/api/categories"
         );
 
         const data = await response.json();
@@ -160,7 +160,7 @@ form.addEventListener("submit", async (event) => {
 
         const response = await fetch(
 
-            "http://13.201.15.236:5000/api/products",
+            "http://localhost:5000/api/products",
 
             {
 

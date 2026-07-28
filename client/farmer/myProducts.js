@@ -27,7 +27,7 @@ if (user.role !== "farmer") {
 // API URL
 // ==========================================
 
-const API_URL = "http://13.201.15.236:5000/api";
+const API_URL = "http://localhost:5000/api";
 
 // ==========================================
 // DOM Elements
@@ -178,7 +178,7 @@ function renderProducts(products) {
     products.forEach(product => {
 
         const image = product.images.length
-            ? `http://13.201.15.236:5000${product.images[0].imageUrl}`
+            ? `http://localhost:5000${product.images[0].imageUrl}`
             : "../images/no-image.png";
 
         productsTable.innerHTML += `

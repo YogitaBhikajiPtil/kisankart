@@ -26,7 +26,7 @@ if (user.role !== "farmer") {
 // API
 // ==========================================
 
-const API_URL = "http://13.201.15.236:5000/api";
+const API_URL = "http://localhost:5000/api";
 
 // ==========================================
 // DOM
@@ -234,11 +234,6 @@ function renderInventory(items) {
 
                 </td>
 
-                <td>
-
-                    ${item.reservedQuantity}
-
-                </td>
 
                 <td>
 
