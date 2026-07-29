@@ -125,24 +125,10 @@ function renderOrders(orders){
 
         order.items.forEach(item=>{
 
-
-            let image = 
-            "../assets/no-image.png";
-
-
-
-            if(
-
-                item.product.images &&
-
-                item.product.images.length>0
-
-            ){
-
-                image = 
-                item.product.images[0].imageUrl;
-
-            }
+  const image =
+            item.product.images.length
+                ? `http://localhost:5000${item.product.images[0].imageUrl}`
+                : "../assets/no-image.png";
 
 
 

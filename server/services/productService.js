@@ -31,6 +31,7 @@ const addProduct = async (
         status,
         totalQuantity,
         unit,
+          marketPrice,
         lowStockThreshold
     } = productData;
 
@@ -66,7 +67,7 @@ const addProduct = async (
         isOrganic,
 
         status,
-
+  marketPrice,
         unit
 
     });

@@ -69,18 +69,10 @@ function renderWishlist(items) {
 
         const product = item.product;
 
-        let image = "../assets/no-image.png";
-
-        if (product.images && product.images.length > 0) {
-
-            image = product.images[0].imageUrl;
-
-        } else if (product.image) {
-
-            image = product.image;
-
-        }
-
+                const image =
+            item.product.images.length
+                ? `http://localhost:5000${item.product.images[0].imageUrl}`
+                : "../assets/no-image.png";
         wishlistContainer.innerHTML += `
 
         <div class="card">

@@ -192,49 +192,52 @@ async()=>{
 
 
 
-
     try{
 
+    const buyNowData = localStorage.getItem("buyNow");
+    const response = await fetch(
 
-        const response = await fetch(
+        CHECKOUT_API,
 
-            CHECKOUT_API,
-
-            {
-
-
-                method:"POST",
+        {
 
 
-                headers:{
+            method:"POST",
 
 
-                    "Content-Type":"application/json",
+            headers:{
 
 
-                    Authorization:`Bearer ${token}`
+                "Content-Type":"application/json",
 
 
-                },
+                Authorization:`Bearer ${token}`
 
 
-                body: JSON.stringify({
-
-    addressId,
-
-    paymentMethod,
-
-    buyNow: JSON.parse(
-        localStorage.getItem("buyNow")
-    )
-
-})
+            },
 
 
-            }
+            
 
-        );
 
+            body: JSON.stringify({
+
+                addressId,
+
+                paymentMethod,
+
+                buyNow: buyNowData 
+                    ? JSON.parse(buyNowData)
+                    : null
+
+            })
+
+
+        }
+
+    );
+
+    
 
 
         const data = await response.json();

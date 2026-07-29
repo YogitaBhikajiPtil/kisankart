@@ -145,6 +145,11 @@ form.addEventListener("submit", async (event) => {
         document.getElementById("isOrganic").checked
     );
 
+    formData.append(
+    "marketPrice",
+    document.getElementById("marketPrice").value
+);
+
     // Images
 
     for (let i = 0; i < imageInput.files.length; i++) {

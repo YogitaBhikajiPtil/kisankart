@@ -14,7 +14,9 @@ const {
 
     Address,
 
-    OrderStatusHistory
+    OrderStatusHistory,
+
+     Inventory
 
 } = require("../models");
 
@@ -184,19 +186,58 @@ if (buyNow) {
 
 
 
-    product.stock -= buyNow.quantity;
+    product.stock -= Number(buyNow.quantity);
 
 
-    if(product.stock === 0){
+if(product.stock < 0){
 
-        product.status="Out Of Stock";
+    throw new Error("Insufficient stock");
+
+}
+
+
+if(product.stock === 0){
+
+    product.status="Out Of Stock";
+
+}
+
+
+await product.save({
+    transaction
+});
+
+
+// Update Inventory
+
+const inventory = await Inventory.findOne({
+
+    where:{
+        productId: product.id
+    },
+
+    transaction
+
+});
+
+
+if(inventory){
+
+    inventory.availableQuantity -= Number(buyNow.quantity);
+
+
+    if(inventory.availableQuantity < 0){
+
+        throw new Error("Insufficient inventory");
 
     }
 
 
-    await product.save({
+    await inventory.save({
         transaction
     });
+
+}
 
 
 
@@ -348,7 +389,7 @@ if (buyNow) {
 
 
 
-            const deliveryCharge = 40;
+            const deliveryCharge = 20;
 
             const tax = subtotal * 0.05;
 
@@ -445,6 +486,28 @@ if (buyNow) {
 const product = item.product;
 
 product.stock -= item.quantity;
+
+const inventory = await Inventory.findOne({
+
+    where:{
+        productId: product.id
+    },
+
+    transaction
+
+});
+
+
+if(inventory){
+
+    inventory.availableQuantity -= Number(item.quantity);
+
+
+    await inventory.save({
+        transaction
+    });
+
+}
 
 if (product.stock < 0) {
     throw new Error("Insufficient stock");

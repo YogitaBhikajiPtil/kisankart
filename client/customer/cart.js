@@ -77,7 +77,7 @@ function renderCart(cart) {
 
         const image =
             item.product.images.length
-                ? item.product.images[0].imageUrl
+                ? `http://localhost:5000${item.product.images[0].imageUrl}`
                 : "../assets/no-image.png";
 
         cartItems.innerHTML += `
