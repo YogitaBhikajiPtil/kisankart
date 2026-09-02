@@ -6,7 +6,7 @@ if (!token) {
 
 }
 
-const API_URL = "http://localhost:5000/api/farmer/analytics";
+const API_URL = "https://kisankart-e53b.onrender.com/api/farmer/analytics";
 
 const totalOrders = document.getElementById("totalOrders");
 

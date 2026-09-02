@@ -24,7 +24,7 @@ if (user.role !== "farmer") {
 // API
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/farmer/orders";
+const API_URL = "https://kisankart-e53b.onrender.com/api/farmer/orders";
 
 // ==========================================
 // DOM

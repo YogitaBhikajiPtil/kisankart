@@ -12,10 +12,10 @@ if (!token) {
 // API
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/customer/products";
-const CART_API = "http://localhost:5000/api/customer/cart";
-const WISHLIST_API = "http://localhost:5000/api/customer/wishlist";
-const BACKEND_URL = "http://localhost:5000";
+const API_URL = "https://kisankart-e53b.onrender.com/api/customer/products";
+const CART_API = "https://kisankart-e53b.onrender.com/api/customer/cart";
+const WISHLIST_API = "https://kisankart-e53b.onrender.com/api/customer/wishlist";
+const BACKEND_URL = "https://kisankart-e53b.onrender.com";
 
 const productId = new URLSearchParams(window.location.search).get("id");
 

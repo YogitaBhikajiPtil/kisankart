@@ -54,7 +54,7 @@ async function loadDashboard() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/farmer/dashboard",
+            "https://kisankart-e53b.onrender.com/api/farmer/dashboard",
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -84,7 +84,7 @@ async function loadDashboard() {
         data.products.forEach(product => {
 
              const image = product.images.length
-            ? `http://localhost:5000${product.images[0].imageUrl}`
+            ? `https://kisankart-e53b.onrender.com${product.images[0].imageUrl}`
             : "../images/no-image.png";
 
             productTable.innerHTML += `
@@ -200,7 +200,7 @@ async function deleteProduct(id) {
 
         const response = await fetch(
 
-            `http://localhost:5000/api/products/${id}`,
+            `https://kisankart-e53b.onrender.com/api/products/${id}`,
 
             {
                 method: "DELETE",

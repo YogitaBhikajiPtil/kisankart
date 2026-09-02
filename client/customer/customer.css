@@ -223,6 +223,18 @@ tbody tr:hover{
     background:#3498db;
 }
 
+.accepted{
+    background:#05b2bf;
+}
+
+.ready-for-pickup{
+    background:#e67e22;
+}
+
+.out-for-delivery{
+    background:#9b59b6;
+}
+
 .delivered{
     background:#27ae60;
 }

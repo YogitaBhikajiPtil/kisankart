@@ -56,7 +56,7 @@ async function loadDashboard() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/customer/dashboard",
+            "https://kisankart-e53b.onrender.com/api/customer/dashboard",
             {
 
                 headers: {
@@ -106,11 +106,9 @@ async function loadDashboard() {
 
                     <td>
 
-                        <span class="status ${order.status.toLowerCase()}">
-
-                            ${order.status}
-
-                        </span>
+                        <span class="status ${order.status.toLowerCase().replace(/\s+/g,'-')}">
+                         ${order.status}
+</span>
 
                     </td>
 

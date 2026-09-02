@@ -8,7 +8,7 @@ if(!token || !user){
 
 }
 
-const API_URL="http://localhost:5000/api/chat/users";
+const API_URL="https://kisankart-e53b.onrender.com/api/chat/users";
 
 const chatList=document.getElementById("chatList");
 

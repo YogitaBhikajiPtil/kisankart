@@ -4,7 +4,7 @@ if (!token) {
     window.location.href = "../login.html";
 }
 
-const API_URL = "http://localhost:5000/api/customer/cart";
+const API_URL = "https://kisankart-e53b.onrender.com/api/customer/cart";
 
 const cartItems = document.getElementById("cartItems");
 const totalItems = document.getElementById("totalItems");
@@ -77,7 +77,7 @@ function renderCart(cart) {
 
         const image =
             item.product.images.length
-                ? `http://localhost:5000${item.product.images[0].imageUrl}`
+                ? `https://kisankart-e53b.onrender.com${item.product.images[0].imageUrl}`
                 : "../assets/no-image.png";
 
         cartItems.innerHTML += `

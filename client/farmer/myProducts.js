@@ -27,7 +27,7 @@ if (user.role !== "farmer") {
 // API URL
 // ==========================================
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://kisankart-e53b.onrender.com/api";
 
 // ==========================================
 // DOM Elements
@@ -178,7 +178,7 @@ function renderProducts(products) {
     products.forEach(product => {
 
         const image = product.images.length
-            ? `http://localhost:5000${product.images[0].imageUrl}`
+            ? `https://kisankart-e53b.onrender.com${product.images[0].imageUrl}`
             : "../images/no-image.png";
 
         productsTable.innerHTML += `

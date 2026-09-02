@@ -10,11 +10,11 @@ if(!token){
 
 
 const ADDRESS_API = 
-"http://localhost:5000/api/customer/address";
+"https://kisankart-e53b.onrender.com/api/customer/address";
 
 
 const CHECKOUT_API = 
-"http://localhost:5000/api/customer/checkout";
+"https://kisankart-e53b.onrender.com/api/customer/checkout";
 
 
 

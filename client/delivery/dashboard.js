@@ -18,7 +18,7 @@ if (
 
 }
 
-const API="http://localhost:5000/api/delivery";
+const API="https://kisankart-e53b.onrender.com/api/delivery";
 
 const availableCount=document.getElementById("availableCount");
 

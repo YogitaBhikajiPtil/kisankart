@@ -7,7 +7,7 @@ if (!token) {
 }
 
 const PAYMENT_API =
-    "http://localhost:5000/api/customer/payment";
+    "https://kisankart-e53b.onrender.com/api/customer/payment";
 
 const params = new URLSearchParams(window.location.search);
 

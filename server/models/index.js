@@ -11,7 +11,7 @@ const Payment = require("./Payment");
 const Cart = require("./Cart");
 const CartItem = require("./CartItem");
 const Wishlist = require("./Wishlist");
-const Review = require("./review");
+const Review = require("./reviewModel");
 const Notification = require("./Notification");
 const Message = require("./Message");
 

@@ -9,9 +9,9 @@ if(!token){
 
 
 
-const API_URL = "http://localhost:5000/api/customer/products";
+const API_URL = "https://kisankart-e53b.onrender.com/api/customer/products";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://kisankart-e53b.onrender.com";
 
 const productContainer = document.getElementById(
 

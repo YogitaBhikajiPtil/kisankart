@@ -7,7 +7,7 @@ if(!token){
 }
 
 
-const API_URL = "http://localhost:5000/api/customer/profile";
+const API_URL = "https://kisankart-e53b.onrender.com/api/customer/profile";
 
 
 const nameInput = document.getElementById("name");

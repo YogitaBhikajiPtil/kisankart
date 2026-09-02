@@ -4,8 +4,8 @@ if (!token) {
     window.location.href = "../login.html";
 }
 
-const WISHLIST_API = "http://localhost:5000/api/customer/wishlist";
-const CART_API = "http://localhost:5000/api/customer/cart";
+const WISHLIST_API = "https://kisankart-e53b.onrender.com/api/customer/wishlist";
+const CART_API = "https://kisankart-e53b.onrender.com/api/customer/cart";
 
 const wishlistContainer = document.getElementById("wishlistContainer");
 
@@ -71,7 +71,7 @@ function renderWishlist(items) {
 
                 const image =
             item.product.images.length
-                ? `http://localhost:5000${item.product.images[0].imageUrl}`
+                ? `https://kisankart-e53b.onrender.com${item.product.images[0].imageUrl}`
                 : "../assets/no-image.png";
         wishlistContainer.innerHTML += `
 

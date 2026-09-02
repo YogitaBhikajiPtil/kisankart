@@ -18,7 +18,7 @@ if (!token || !user || user.role !== "farmer") {
 // API
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/farmer/orders";
+const API_URL = "https://kisankart-e53b.onrender.com/api/farmer/orders";
 
 const orderId = new URLSearchParams(
 
@@ -282,7 +282,7 @@ console.log(
 
                     <img
 
-                        src="${item.product.images.length ? 'http://localhost:5000' + item.product.images[0].imageUrl : '../assets/no-image.png'}"
+                        src="${item.product.images.length ? 'https://kisankart-e53b.onrender.com' + item.product.images[0].imageUrl : '../assets/no-image.png'}"
 
                         class="product-image">
 

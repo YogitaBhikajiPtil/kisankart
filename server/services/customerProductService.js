@@ -8,7 +8,7 @@ const {
 
     ProductImage,
 
-    Review
+   Review
 
 } = require("../models");
 
@@ -312,9 +312,8 @@ const getProductById = async(id)=>{
 
             {
 
-                model:Review,
-
-                as:"reviews"
+               model:Review,
+              as:"reviews"
 
             }
 

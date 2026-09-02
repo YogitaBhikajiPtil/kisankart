@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 const API =
-"http://localhost:5000/api/admin/orders";
+"https://kisankart-e53b.onrender.com/api/admin/orders";
 
 async function loadOrders(){
 

@@ -10,7 +10,7 @@ if(!token){
 
 
 const API = 
-"http://localhost:5000/api/customer/orders";
+"https://kisankart-e53b.onrender.com/api/customer/orders";
 
 
 const ordersContainer = 
@@ -127,7 +127,7 @@ function renderOrders(orders){
 
   const image =
             item.product.images.length
-                ? `http://localhost:5000${item.product.images[0].imageUrl}`
+                ? `https://kisankart-e53b.onrender.com${item.product.images[0].imageUrl}`
                 : "../assets/no-image.png";
 
 

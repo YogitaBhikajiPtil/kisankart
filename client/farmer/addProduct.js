@@ -42,7 +42,7 @@ async function loadCategories() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/categories"
+            "https://kisankart-e53b.onrender.com/api/categories"
         );
 
         const data = await response.json();
@@ -165,7 +165,7 @@ form.addEventListener("submit", async (event) => {
 
         const response = await fetch(
 
-            "http://localhost:5000/api/products",
+            "https://kisankart-e53b.onrender.com/api/products",
 
             {
 
